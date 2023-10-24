@@ -1,0 +1,84 @@
+      body {
+        font-family: Arial;
+        background: #fff;
+        margin: 0;
+      }
+      /* Header/Logo Title */
+      .header {
+        padding: 5px;
+        text-align: center;
+        background: #1abc9c;
+        color: white;
+        font-size: 20px;
+        position: -webkit-sticky; /* Necessário para funcionar no Safari */
+        position: sticky;
+        top: 0;
+      }
+      /* Page Content */
+      .content {padding:20px;}
+
+      ul, #myUL {
+        list-style-type: none;
+        border-left: 1px dotted #976d10;
+      }
+      li {
+        color: #1ea079
+      }
+      span {
+        color:#976d10;
+      }
+
+      #myUL {
+        margin: 0;
+        padding: 20px;
+      }
+
+      .box {
+        cursor: pointer;
+        -webkit-user-select: none; /* Safari 3.1+ */
+        -moz-user-select: none; /* Firefox 2+ */
+        -ms-user-select: none; /* IE 10+ */
+        user-select: none;
+      }
+
+      .box::before {
+        content: "\2611";
+        color: #976d10; /*dodgerblue;*/
+        display: inline-block;
+        margin-right: 6px;
+      }
+
+      .check-box::before {
+        content: "\2610";
+        color: #1ea079; /*black;*/
+      }
+
+      .nested {
+        display: block
+      }
+
+      .active {
+        display: none;
+      }
+
+      /* Loader */
+      .loader {
+        border: 10px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 10px solid #3498db;
+        width: 120px;
+        height: 120px;
+        -webkit-animation: spin 2s linear infinite; /* Safari */
+        animation: spin 2s linear infinite;
+      }
+
+      /* Safari */
+      @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
