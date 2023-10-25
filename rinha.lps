@@ -13,6 +13,29 @@
         <Loaded Value="True"/>
       </Unit>
       <Unit>
+        <Filename Value="index.html"/>
+        <IsPartOfProject Value="True"/>
+        <CustomData Count="1">
+          <Item0 Name="PasJSIsProjectHTMLFile" Value="1"/>
+        </CustomData>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <CursorPos X="53" Y="14"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="HTML"/>
+      </Unit>
+      <Unit>
+        <Filename Value="rinha.html"/>
+        <CustomData Count="1">
+          <Item0 Name="PasJSIsProjectHTMLFile" Value="1"/>
+        </CustomData>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="40" Y="14"/>
+        <UsageCount Value="23"/>
+        <DefaultSyntaxHighlighter Value="HTML"/>
+      </Unit>
+      <Unit>
         <Filename Value="demoreadfileinput.html"/>
         <CustomData Count="1">
           <Item0 Name="PasJSIsProjectHTMLFile" Value="1"/>
@@ -68,19 +91,6 @@
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="CSS"/>
       </Unit>
-      <Unit>
-        <Filename Value="rinha.html"/>
-        <IsPartOfProject Value="True"/>
-        <CustomData Count="1">
-          <Item0 Name="PasJSIsProjectHTMLFile" Value="1"/>
-        </CustomData>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
-        <CursorPos X="40" Y="14"/>
-        <UsageCount Value="23"/>
-        <Loaded Value="True"/>
-        <DefaultSyntaxHighlighter Value="HTML"/>
-      </Unit>
     </Units>
     <JumpHistory HistoryIndex="2">
       <Position>
@@ -98,7 +108,7 @@
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>
-      <Modes ActiveMode="">
+      <Modes ActiveMode="Default">
         <Mode Name="Default">
           <local>
             <LaunchingApplication Use="True" PathPlusParams="&quot;$(Pas2JSBrowser)&quot; &quot;$(Pas2JSProjectURL)&quot;"/>
@@ -107,13 +117,11 @@
       </Modes>
     </RunParams>
     <HistoryLists>
-      <List Name="WorkingDirectory" Type="File" Count="1"/>
       <List Name="LaunchingApplication" Type="File" Count="3">
         <Item1 Value="&quot;$(Pas2JSBrowser)&quot; &quot;$(Pas2JSProjectURL)&quot;"/>
         <Item2 Value="/usr/bin/xterm -T &apos;Lazarus Run Output&apos; -e $(LazarusDir)/tools/runwait.sh $(TargetCmdLine)"/>
         <Item3 Value="/usr/bin/gnome-terminal -t &apos;Lazarus Run Output&apos; -e &apos;$(LazarusDir)/tools/runwait.sh $(TargetCmdLine)&apos;"/>
       </List>
-      <List Name="CommandLineParameters" Count="1"/>
     </HistoryLists>
   </ProjectSession>
 </CONFIG>

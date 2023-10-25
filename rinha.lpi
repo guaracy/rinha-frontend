@@ -10,7 +10,7 @@
         <Runnable Value="False"/>
       </Flags>
       <SessionStorage Value="InProjectDir"/>
-      <Title Value="rinha"/>
+      <Title Value="index"/>
       <UseAppBundle Value="False"/>
       <ResourceType Value="res"/>
     </General>
@@ -38,7 +38,7 @@
         <IsPartOfProject Value="True"/>
       </Unit>
       <Unit>
-        <Filename Value="rinha.html"/>
+        <Filename Value="index.html"/>
         <IsPartOfProject Value="True"/>
         <CustomData Count="1">
           <Item0 Name="PasJSIsProjectHTMLFile" Value="1"/>
