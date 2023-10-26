@@ -43,17 +43,26 @@ var
         case oo.Value.JSONType of
           jtNull: vl:='null';
           jtNumber: vl :=oo.Value.AsFloat.ToString;
-          jtString: vl := '"'+oo.Value.AsString+'"';
+          jtString: vl := oo.Value.AsString;
         else
           vl:=oo.Value.AsString;
         end;
         lii:=document.createElement('li');
         sp:=document.createElement('i');
-        sp.innerText:=oo.Key;
+        sp.innerText:=oo.Key+' = ';
         lii.appendChild(sp);
-        sp:=document.createElement('b');
-        sp.innerText:=' = '+vl;
-        lii.appendChild(sp);
+        if oo.Value.JSONType = jtString then begin
+          if vl.StartsWith('http') then begin
+            sp:=document.createElement('a');
+            sp['href']:=vl;
+            sp['target']:='_blank';
+            sp.innerText:=vl;
+          end else begin
+            sp:=document.createElement('b');
+            sp.innerText:='"'+vl+'"';
+          end;
+          lii.appendChild(sp);
+        end;
         el.appendChild(lii);
         inc(ni);
       end;

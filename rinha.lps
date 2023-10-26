@@ -8,9 +8,9 @@
         <Filename Value="rinha.lpr"/>
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="47"/>
-        <CursorPos X="26" Y="57"/>
-        <UsageCount Value="107"/>
+        <TopLine Value="45"/>
+        <CursorPos X="26" Y="58"/>
+        <UsageCount Value="110"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -20,8 +20,8 @@
           <Item0 Name="PasJSIsProjectHTMLFile" Value="1"/>
         </CustomData>
         <EditorIndex Value="1"/>
-        <CursorPos Y="8"/>
-        <UsageCount Value="21"/>
+        <CursorPos X="61" Y="14"/>
+        <UsageCount Value="24"/>
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="HTML"/>
       </Unit>
@@ -87,12 +87,12 @@
         <EditorIndex Value="2"/>
         <TopLine Value="36"/>
         <CursorPos X="35" Y="53"/>
-        <UsageCount Value="19"/>
+        <UsageCount Value="20"/>
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="CSS"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="2">
+    <JumpHistory HistoryIndex="3">
       <Position>
         <Filename Value="rinha.lpr"/>
         <Caret Line="54" Column="29" TopLine="42"/>
@@ -104,6 +104,10 @@
       <Position>
         <Filename Value="rinha.lpr"/>
         <Caret Line="54" Column="29" TopLine="32"/>
+      </Position>
+      <Position>
+        <Filename Value="rinha.lpr"/>
+        <Caret Line="65" TopLine="42"/>
       </Position>
     </JumpHistory>
     <RunParams>
