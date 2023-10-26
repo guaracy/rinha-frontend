@@ -1913,12 +1913,18 @@ rtl.module("SysUtils",["System","RTLConsts","JS"],function () {
   this.UpperCase = function (s) {
     return s.toUpperCase();
   };
+  this.SameStr = function (s1, s2) {
+    return s1 == s2;
+  };
   this.CompareText = function (s1, s2) {
     var l1 = s1.toLowerCase();
     var l2 = s2.toLowerCase();
     if (l1>l2){ return 1;
     } else if (l1<l2){ return -1;
     } else { return 0; };
+  };
+  this.SameText = function (s1, s2) {
+    return s1.toLowerCase() == s2.toLowerCase();
   };
   this.Format = function (Fmt, Args) {
     var Result = "";
@@ -2668,6 +2674,26 @@ rtl.module("SysUtils",["System","RTLConsts","JS"],function () {
     this.GetLength = function () {
       var Result = 0;
       Result = this.get().length;
+      return Result;
+    };
+    this.StartsWith = function (AValue) {
+      var Result = false;
+      Result = $mod.TStringHelper.StartsWith$1.call(this,AValue,false);
+      return Result;
+    };
+    this.StartsWith$1 = function (AValue, IgnoreCase) {
+      var Result = false;
+      var L = 0;
+      var S = "";
+      L = AValue.length;
+      Result = L <= 0;
+      if (!Result) {
+        S = pas.System.Copy(this.get(),1,L);
+        Result = S.length === L;
+        if (Result) if (IgnoreCase) {
+          Result = $mod.SameText(S,AValue)}
+         else Result = $mod.SameStr(S,AValue);
+      };
       return Result;
     };
   });
@@ -4224,17 +4250,30 @@ rtl.module("program",["System","Web","JS","fpjson","fpjsonjs","SysUtils"],functi
                   this.p = v;
                 }})}
              else if ($tmp1 === 2) {
-              vl = '"' + oo.Value.GetAsString() + '"'}
+              vl = oo.Value.GetAsString()}
              else {
               vl = oo.Value.GetAsString();
             };
             lii = document.createElement("li");
             sp = document.createElement("i");
-            sp.innerText = oo.Key;
+            sp.innerText = oo.Key + " = ";
             lii.appendChild(sp);
-            sp = document.createElement("b");
-            sp.innerText = " = " + vl;
-            lii.appendChild(sp);
+            if (oo.Value.$class.JSONType() === 2) {
+              if (pas.SysUtils.TStringHelper.StartsWith.call({get: function () {
+                  return vl;
+                }, set: function (v) {
+                  vl = v;
+                }},"http")) {
+                sp = document.createElement("a");
+                sp.setAttribute("href",vl);
+                sp.setAttribute("target","_blank");
+                sp.innerText = vl;
+              } else {
+                sp = document.createElement("b");
+                sp.innerText = '"' + vl + '"';
+              };
+              lii.appendChild(sp);
+            };
             el.appendChild(lii);
             ni += 1;
           };
