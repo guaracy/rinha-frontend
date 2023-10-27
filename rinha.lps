@@ -8,9 +8,8 @@
         <Filename Value="rinha.lpr"/>
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="45"/>
-        <CursorPos X="26" Y="58"/>
-        <UsageCount Value="110"/>
+        <CursorPos X="3" Y="16"/>
+        <UsageCount Value="113"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -21,7 +20,7 @@
         </CustomData>
         <EditorIndex Value="1"/>
         <CursorPos X="61" Y="14"/>
-        <UsageCount Value="24"/>
+        <UsageCount Value="27"/>
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="HTML"/>
       </Unit>
@@ -56,8 +55,8 @@
       <Unit>
         <Filename Value="../../PasWASM/fpcupdeluxe/ccr/pas2js-rtl/packages/fcl-json/fpjson.pp"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="19"/>
-        <CursorPos X="87" Y="33"/>
+        <TopLine Value="780"/>
+        <CursorPos X="91" Y="792"/>
         <UsageCount Value="35"/>
       </Unit>
       <Unit>
@@ -85,14 +84,14 @@
       <Unit>
         <Filename Value="rinha.css"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="36"/>
-        <CursorPos X="35" Y="53"/>
-        <UsageCount Value="20"/>
+        <TopLine Value="61"/>
+        <CursorPos X="24" Y="64"/>
+        <UsageCount Value="22"/>
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="CSS"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="3">
+    <JumpHistory HistoryIndex="8">
       <Position>
         <Filename Value="rinha.lpr"/>
         <Caret Line="54" Column="29" TopLine="42"/>
@@ -108,6 +107,26 @@
       <Position>
         <Filename Value="rinha.lpr"/>
         <Caret Line="65" TopLine="42"/>
+      </Position>
+      <Position>
+        <Filename Value="rinha.lpr"/>
+        <Caret Line="78" Column="21" TopLine="62"/>
+      </Position>
+      <Position>
+        <Filename Value="rinha.lpr"/>
+        <Caret Line="17" Column="8" TopLine="10"/>
+      </Position>
+      <Position>
+        <Filename Value="rinha.lpr"/>
+        <Caret Line="103" Column="41" TopLine="81"/>
+      </Position>
+      <Position>
+        <Filename Value="rinha.lpr"/>
+        <Caret Line="105" Column="8" TopLine="88"/>
+      </Position>
+      <Position>
+        <Filename Value="rinha.lpr"/>
+        <Caret Line="120" Column="11" TopLine="108"/>
       </Position>
     </JumpHistory>
     <RunParams>

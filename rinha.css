@@ -61,22 +61,22 @@
 
       .box::before {
         content: "\2611";
-        color: #976d10; /*dodgerblue;*/
+        color: #976d10;
         display: inline-block;
         margin-right: 6px;
       }
 
       .check-box::before {
         content: "\2610";
-        color: #1ea079; /*black;*/
+        color: #1ea079;
       }
 
       .nested {
-        display: block
+        display: none;
       }
 
       .active {
-        display: none;
+        display: block;
       }
 
       /* Loader */

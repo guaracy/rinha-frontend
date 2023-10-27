@@ -8,12 +8,14 @@ var
   ulText,
   lbText:TJSHTMLElement;
   LFile: TJSHTMLFile;
+  ti:TDateTime;
 
 function LerArquivo(aEvent: TEventListenerEvent): Boolean;
 var
-  ni:LongInt;
-  t: TDateTime;
+  ni,ne:LongInt;
+  tl,tp,tr,tf: TDateTime;
   LFileContent: String;
+  JSON:TJSONData;
 
   procedure montaLista(jData : TJSONData;el:TJSElement);
   var
@@ -33,11 +35,14 @@ var
         sp.innerText:=oo.Key+tp+'['+oo.Value.Count.ToString+']';
         li:=document.createElement('li');
         li.appendChild(sp);
+        inc(ne);
         ul:=document.createElement('ul');
         ul['class']:='nested';
         montaLista(oo.Value,ul);
         li.appendChild(ul);
+        inc(ne);
         el.appendChild(li);
+        inc(ne);
         inc(ni);
       end else begin
         case oo.Value.JSONType of
@@ -51,6 +56,7 @@ var
         sp:=document.createElement('i');
         sp.innerText:=oo.Key+' = ';
         lii.appendChild(sp);
+        inc(ne);
         if oo.Value.JSONType = jtString then begin
           if vl.StartsWith('http') then begin
             sp:=document.createElement('a');
@@ -62,23 +68,27 @@ var
             sp.innerText:='"'+vl+'"';
           end;
           lii.appendChild(sp);
+          inc(ne);
         end;
         el.appendChild(lii);
+        inc(ne);
         inc(ni);
       end;
     end;
   end;
 
 begin
-  t:=now;
   LFileContent := String(TJSFileReader(aEvent.Target).Result);
+  tl:=now;
   try
+    JSON:=GetJSON(LFileContent,true);
+    tp:=now;
     ulText.innerText:='';
-    montaLista(GetJSON(LFileContent,true),ulText);
+    montaLista(JSON,ulText);
+    tr:=now;
     asm
       var toggler = document.getElementsByClassName("box");
       var i;
-
       for (i = 0; i < toggler.length; i++) {
         toggler[i].addEventListener("click", function() {
           this.parentElement.querySelector(".nested").classList.toggle("active");
@@ -86,10 +96,19 @@ begin
         });
       }
     end;
-    t:=now-t;
-    lbText.innerHTML:=LFileContent.Length.ToString+' bytes com '+
-                      ni.ToString+' itens em '+
-                      FormatDateTime('nn:ss.zzz ',t);
+    tf:=now;
+    lbText.innerHTML:=Format('%u bytes em:<b>%s</b> / %u itens em:<b>%s</b> / %u elementos em:<b>%s</b> / total:<b>%s</b>',[
+    LFileContent.Length,
+    FormatDateTime('nn:ss.zzz ',tl-ti),
+    ni,
+    FormatDateTime('nn:ss.zzz ',tp-tl),
+    ne,
+    FormatDateTime('nn:ss.zzz ',tr-tp),
+    FormatDateTime('nn:ss.zzz ',tf-ti)]);
+
+    //.ToString+' bytes com '+
+    //                  ni.ToString+' itens em '+
+    //                  FormatDateTime('nn:ss.zzz ',t);
   except
     lbText.innerHTML:='<center><pre><font color="red">Arquivo JSON inválido.</font></pre></center>';
   end;
@@ -99,6 +118,7 @@ function NovoArquivo(aEvent: TEventListenerEvent): Boolean;
 var
   LReader: TJSFileReader;
 begin
+  ti:=now;
   LFile := GInput.Files[0];
   LReader := TJSFileReader.New;
   LReader.OnLoad := @LerArquivo;
