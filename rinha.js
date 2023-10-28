@@ -2711,13 +2711,6 @@ rtl.module("SysUtils",["System","RTLConsts","JS"],function () {
       return Result;
     };
   });
-  rtl.createHelper(this,"TNativeIntHelper",null,function () {
-    this.ToString$1 = function () {
-      var Result = "";
-      Result = $mod.IntToStr(this.get());
-      return Result;
-    };
-  });
   $mod.$implcode = function () {
     $impl.DefaultShortMonthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
     $impl.DefaultLongMonthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
@@ -4202,11 +4195,17 @@ rtl.module("program",["System","Web","JS","fpjson","fpjsonjs","SysUtils"],functi
   this.ulText = null;
   this.lbText = null;
   this.LFile = null;
+  this.ti = 0.0;
   this.LerArquivo = function (aEvent) {
     var Result = false;
     var ni = 0;
-    var t = 0.0;
+    var ne = 0;
+    var tl = 0.0;
+    var tp = 0.0;
+    var tr = 0.0;
+    var tf = 0.0;
     var LFileContent = "";
+    var jSON = null;
     function montaLista(jData, el) {
       var oo = pas.fpjson.TJSONEnum.$new();
       var tp = "";
@@ -4233,11 +4232,14 @@ rtl.module("program",["System","Web","JS","fpjson","fpjsonjs","SysUtils"],functi
               }}) + "]";
             li = document.createElement("li");
             li.appendChild(sp);
+            ne += 1;
             ul = document.createElement("ul");
             ul.setAttribute("class","nested");
             montaLista(oo.Value,ul);
             li.appendChild(ul);
+            ne += 1;
             el.appendChild(li);
+            ne += 1;
             ni += 1;
           } else {
             var $tmp1 = oo.Value.$class.JSONType();
@@ -4258,6 +4260,7 @@ rtl.module("program",["System","Web","JS","fpjson","fpjsonjs","SysUtils"],functi
             sp = document.createElement("i");
             sp.innerText = oo.Key + " = ";
             lii.appendChild(sp);
+            ne += 1;
             if (oo.Value.$class.JSONType() === 2) {
               if (pas.SysUtils.TStringHelper.StartsWith.call({get: function () {
                   return vl;
@@ -4273,8 +4276,10 @@ rtl.module("program",["System","Web","JS","fpjson","fpjsonjs","SysUtils"],functi
                 sp.innerText = '"' + vl + '"';
               };
               lii.appendChild(sp);
+              ne += 1;
             };
             el.appendChild(lii);
+            ne += 1;
             ni += 1;
           };
         }
@@ -4282,34 +4287,28 @@ rtl.module("program",["System","Web","JS","fpjson","fpjsonjs","SysUtils"],functi
         $in = rtl.freeLoc($in)
       };
     };
-    t = pas.SysUtils.Now();
     LFileContent = "" + aEvent.target.result;
+    tl = pas.SysUtils.Now();
     try {
+      jSON = pas.fpjson.GetJSON(LFileContent,true);
+      tp = pas.SysUtils.Now();
       $mod.ulText.innerText = "";
-      montaLista(pas.fpjson.GetJSON(LFileContent,true),$mod.ulText);
+      montaLista(jSON,$mod.ulText);
+      tr = pas.SysUtils.Now();
       var toggler = document.getElementsByClassName("box");
-            var i;
-      
-            for (i = 0; i < toggler.length; i++) {
-              toggler[i].addEventListener("click", function() {
-                this.parentElement.querySelector(".nested").classList.toggle("active");
-                this.classList.toggle("check-box");
-              });
-            };
-      t = pas.SysUtils.Now() - t;
-      $mod.lbText.innerHTML = pas.SysUtils.TNativeIntHelper.ToString$1.call({p: pas.SysUtils.TStringHelper.GetLength.call({get: function () {
-            return LFileContent;
-          }, set: function (v) {
-            LFileContent = v;
-          }}), get: function () {
-          return this.p;
+      var i;
+      for (i = 0; i < toggler.length; i++) {
+        toggler[i].addEventListener("click", function() {
+          this.parentElement.querySelector(".nested").classList.toggle("active");
+          this.classList.toggle("check-box");
+        });
+      };
+      tf = pas.SysUtils.Now();
+      $mod.lbText.innerHTML = pas.SysUtils.Format("%u bytes em:<b>%s</b> / %u itens em:<b>%s</b> / %u elementos em:<b>%s</b> / total:<b>%s</b>",pas.System.VarRecs(19,pas.SysUtils.TStringHelper.GetLength.call({get: function () {
+          return LFileContent;
         }, set: function (v) {
-          this.p = v;
-        }}) + " bytes com " + pas.SysUtils.TIntegerHelper.ToString$1.call({get: function () {
-          return ni;
-        }, set: function (v) {
-          ni = v;
-        }}) + " itens em " + pas.SysUtils.FormatDateTime("nn:ss.zzz ",t);
+          LFileContent = v;
+        }}),18,pas.SysUtils.FormatDateTime("nn:ss.zzz ",tl - $mod.ti),0,ni,18,pas.SysUtils.FormatDateTime("nn:ss.zzz ",tp - tl),0,ne,18,pas.SysUtils.FormatDateTime("nn:ss.zzz ",tr - tp),18,pas.SysUtils.FormatDateTime("nn:ss.zzz ",tf - $mod.ti)));
     } catch ($e) {
       $mod.lbText.innerHTML = '<center><pre><font color="red">Arquivo JSON inválido.</font></pre></center>';
     };
@@ -4318,6 +4317,7 @@ rtl.module("program",["System","Web","JS","fpjson","fpjsonjs","SysUtils"],functi
   this.NovoArquivo = function (aEvent) {
     var Result = false;
     var LReader = null;
+    $mod.ti = pas.SysUtils.Now();
     $mod.LFile = $mod.GInput.files.item(0);
     LReader = new FileReader();
     LReader.onload = rtl.createSafeCallback($mod,"LerArquivo");

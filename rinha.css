@@ -61,18 +61,18 @@
 
       .box::before {
         content: "\2611";
-        color: #976d10; /*dodgerblue;*/
+        color: #976d10;
         display: inline-block;
         margin-right: 6px;
       }
 
       .check-box::before {
         content: "\2610";
-        color: #1ea079; /*black;*/
+        color: #1ea079;
       }
 
       .nested {
-        display: block
+        display: block;
       }
 
       .active {
@@ -84,8 +84,8 @@
         border: 10px solid #f3f3f3;
         border-radius: 50%;
         border-top: 10px solid #3498db;
-        width: 120px;
-        height: 120px;
+        width: 60px;
+        height: 60px;
         -webkit-animation: spin 2s linear infinite; /* Safari */
         animation: spin 2s linear infinite;
       }
