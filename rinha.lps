@@ -7,9 +7,9 @@
       <Unit>
         <Filename Value="rinha.lpr"/>
         <IsPartOfProject Value="True"/>
-        <TopLine Value="67"/>
+        <TopLine Value="104"/>
         <CursorPos X="3" Y="16"/>
-        <UsageCount Value="114"/>
+        <UsageCount Value="115"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -19,8 +19,8 @@
           <Item0 Name="PasJSIsProjectHTMLFile" Value="1"/>
         </CustomData>
         <EditorIndex Value="1"/>
-        <CursorPos X="61" Y="14"/>
-        <UsageCount Value="28"/>
+        <CursorPos X="59" Y="14"/>
+        <UsageCount Value="29"/>
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="HTML"/>
       </Unit>
@@ -85,9 +85,9 @@
         <Filename Value="rinha.css"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="61"/>
-        <CursorPos X="24" Y="70"/>
-        <UsageCount Value="22"/>
+        <TopLine Value="68"/>
+        <CursorPos X="73" Y="72"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="CSS"/>
       </Unit>

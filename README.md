@@ -1,5 +1,13 @@
 # [Rinha de Front-end](https://codante.io/rinha-frontend)
 
+> Esta versão foi feita usando a linguagem Pascal. O programa está no arquivo [rinha.lpr](rinha.lpr). Os arquivos com extensão `.lpr` e `.lpi` são arquivos de controle do Lazarus (IDE para o desenvolvimento do programas com diversas facilidades para a programação usando FreePascal, seja GUI ou não). Basicamente, o Pas2JS transpila o código em Pascal para JavaScript, mantendo todas as características da linguagem. Se você deseja *compilar* o programa, é necessário instalar o ambiente de desenvolvimento. Aconselho seguir este [tutorial](https://guaracy.github.io/Pas2JS/install/). É possível criar programas para back-end (compilados nativamente para Linux, Windows, Mac ou transpilados para rodar em Node.js) e GUI nativas para Linux, Windows e Mac
+> 
+> Esta versão trabalha de forma relativamente confortável até o arquivo `large.json` (25MB com 637.594 objetos lido em menos de 4s na minha máquina). Aqui vale uma observação: Os testes foram feitos no Linux utilizando o **Firefox**. No **Opera** a página `large` não é carregada. No **Chromium** também nãoé visualizada e apresenta o código de erro **SIGILL**.
+> 
+> Para o arquivo `giant.json`, o programa até lê (se tiver memória disponível, tipo 16G de RAM) as trava a aba quando for expandir os nós. Mas um arquivo com 181MB e quase 14 milhões de objetos é só para o desafio mesmo. Na vida real, seria mais um banco de dados e teríamos maneiras melhores para acessar (sem colocar tudo na página). Até seria possível fazer em Pascal e ir apresentando os elementos quando o usuário for rolando a tela (`on-scroll`) ou um temporizador para ir apresentando. Mas não existe mágica. Para apresentar os últimos elementos, existe uma pausa que poderia confundir o usuário (acho que seria um ponto negativo na acessibilidade).
+
+
+
 Este é o repositório da Rinha de Frontend. Esta é uma brincadeira e um desafio de código inspirada pela _"Rinha de Backend"_, uma iniciativa criada por Francisco Franceschi.
 
 O desafio consiste em montar um sistema Frontend com a stack que você quiser, e estressá-lo de acordo com as especificações abaixo, simplesmente pra ver o que acontece. Quem tirar a melhor performance nos critérios aqui estabelecidos, vence.

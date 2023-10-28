@@ -84,8 +84,8 @@
         border: 10px solid #f3f3f3;
         border-radius: 50%;
         border-top: 10px solid #3498db;
-        width: 120px;
-        height: 120px;
+        width: 60px;
+        height: 60px;
         -webkit-animation: spin 2s linear infinite; /* Safari */
         animation: spin 2s linear infinite;
       }
