@@ -1,12 +1,22 @@
 # [Rinha de Front-end](https://codante.io/rinha-frontend)
 
-> Esta versão foi feita usando a linguagem Pascal. O programa está no arquivo [rinha.lpr](rinha.lpr). Os arquivos com extensão `.lpr` e `.lpi` são arquivos de controle do Lazarus (IDE para o desenvolvimento do programas com diversas facilidades para a programação usando FreePascal, seja GUI ou não). Basicamente, o Pas2JS transpila o código em Pascal para JavaScript, mantendo todas as características da linguagem. Se você deseja *compilar* o programa, é necessário instalar o ambiente de desenvolvimento. Aconselho seguir este [tutorial](https://guaracy.github.io/Pas2JS/install/). É possível criar programas para back-end (compilados nativamente para Linux, Windows, Mac ou transpilados para rodar em Node.js) e GUI nativas para Linux, Windows e Mac
+> Esta versão foi feita usando a linguagem Pascal. O programa está no arquivo [rinha.lpr](rinha.lpr). Os arquivos com extensão `.lpr` e `.lpi` são arquivos de controle do Lazarus (IDE para o desenvolvimento do programas com diversas facilidades para a programação usando FreePascal, seja GUI ou não). Basicamente, o Pas2JS transpila o código em Pascal para JavaScript, mantendo todas as características da linguagem. Se você deseja *compilar* o programa, é necessário instalar o ambiente de desenvolvimento. Aconselho seguir este [tutorial](https://guaracy.github.io/Pas2JS/install/). É possível criar programas para back-end (compilados nativamente para Linux, Windows, Mac ou transpilado para rodar em Node.js) e GUI nativas para Linux, Windows e Mac
 > 
-> Esta versão trabalha de forma relativamente confortável até o arquivo `large.json` (25MB com 637.594 objetos lido em menos de 4s na minha máquina). Aqui vale uma observação: Os testes foram feitos no Linux utilizando o **Firefox**. No **Opera** a página `large` não é carregada. No **Chromium** também nãoé visualizada e apresenta o código de erro **SIGILL**.
+> Esta versão trabalha de forma relativamente confortável até o arquivo `large.json` (25MB com 637.594 objetos lido em menos de 4s na minha máquina) usando o Firefox
 > 
-> Para o arquivo `giant.json`, o programa até lê (se tiver memória disponível, tipo 16G de RAM) as trava a aba quando for expandir os nós. Mas um arquivo com 181MB e quase 14 milhões de objetos é só para o desafio mesmo. Na vida real, seria mais um banco de dados e teríamos maneiras melhores para acessar (sem colocar tudo na página). Até seria possível fazer em Pascal e ir apresentando os elementos quando o usuário for rolando a tela (`on-scroll`) ou um temporizador para ir apresentando. Mas não existe mágica. Para apresentar os últimos elementos, existe uma pausa que poderia confundir o usuário (acho que seria um ponto negativo na acessibilidade).
-
-
+> - O Opera não abre o arquivo (mesmo com 16GB RAM)
+> 
+> - O Chromium também não abre e mostra uma mensagem **SIGILL**.
+> 
+> - No [Mabox](https://maboxlinux.org/), com 4G RAM em uma VirtualBox, o Firefox abre e ainda sobra memória. O Opera e Chromium não abrem.
+> 
+> - No Garuda, com 4G RAM em uma VirtualBox, o Firefox abre e o Falkon também (ocupa quase toda a memória mas, só o monitor para visualizar o consumo ocupa 66MiB)
+> 
+> - No Windows (laptop com 8G RAM) o Firefox abre em 4,3s, deixa disponível 2,2G de RAM e é funcional. O Microsoft Edge abre em 10s, ocupa toda a memória e, depois de alguns cliques, falha com `OutMemory`
+> 
+> Para o arquivo `giant.json`, o programa até lê (se tiver memória disponível, tipo 16G de RAM) mas trava a aba quando for expandir os nós. Mas um arquivo com 181MB e quase 14 milhões de objetos é só para o desafio mesmo. Na vida real, seria mais um banco de dados e teríamos maneiras melhores para acessar (sem colocar tudo na página). Até seria possível fazer em Pascal e ir apresentando os elementos quando o usuário for rolando a tela (`on-scroll`) ou um temporizador para ir apresentando. Mas não existe mágica. Para apresentar os últimos elementos, existe uma pausa que poderia confundir o usuário (acho que seria um ponto negativo na acessibilidade).
+> 
+> Você pode clonar este repositório e abrir o arquivo `index.html` ou ir direto em https://guaracy.github.io/rinha-frontend/ (não esqueça que você deve baixar os arquivo [json](https://drive.google.com/drive/folders/1oO0AoBQukdF3_DxRYn1di7O4Iiqom1wJ) para leitura )
 
 Este é o repositório da Rinha de Frontend. Esta é uma brincadeira e um desafio de código inspirada pela _"Rinha de Backend"_, uma iniciativa criada por Francisco Franceschi.
 

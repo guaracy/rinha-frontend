@@ -7,8 +7,9 @@
       <Unit>
         <Filename Value="rinha.lpr"/>
         <IsPartOfProject Value="True"/>
-        <TopLine Value="104"/>
-        <CursorPos X="3" Y="16"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="86"/>
+        <CursorPos X="70" Y="101"/>
         <UsageCount Value="115"/>
         <Loaded Value="True"/>
       </Unit>
@@ -83,7 +84,6 @@
       </Unit>
       <Unit>
         <Filename Value="rinha.css"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
         <TopLine Value="68"/>
         <CursorPos X="73" Y="72"/>
