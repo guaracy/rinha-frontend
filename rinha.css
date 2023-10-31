@@ -7,7 +7,7 @@
       a:link {
         color: #1ea079;
         background-color: transparent;
-        text-decoration: none;
+        text-decoration: underline;
         font-weight: bold;
       }
       a:visited {
@@ -16,9 +16,9 @@
         text-decoration: none;
       }
       a:hover {
-        color: #1ea079;
-        background-color: transparent;
-        text-decoration: underline;
+        color: #fff;
+        background-color: #1ea079;
+        text-decoration: none;
       }
 
       /* Header/Logo Title */

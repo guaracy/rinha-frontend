@@ -4191,7 +4191,7 @@ rtl.module("fpjsonjs",["System","Classes","Types","fpjson"],function () {
 rtl.module("program",["System","Web","JS","fpjson","fpjsonjs","SysUtils"],function () {
   "use strict";
   var $mod = this;
-  this.GInput = null;
+  this.FInput = null;
   this.ulText = null;
   this.lbText = null;
   this.LFile = null;
@@ -4214,6 +4214,7 @@ rtl.module("program",["System","Web","JS","fpjson","fpjsonjs","SysUtils"],functi
       var lii = null;
       var ul = null;
       var sp = null;
+      var href = null;
       var $in = jData.GetEnumerator();
       try {
         while ($in.MoveNext()) {
@@ -4224,6 +4225,7 @@ rtl.module("program",["System","Web","JS","fpjson","fpjsonjs","SysUtils"],functi
               tp = " : Object"}
              else if ($tmp === 5) tp = " : Array";
             sp = document.createElement("span");
+            ne += 1;
             sp.setAttribute("class","box");
             sp.innerText = oo.Key + tp + "[" + pas.SysUtils.TIntegerHelper.ToString$1.call({p: oo.Value.GetCount(), get: function () {
                 return this.p;
@@ -4231,15 +4233,14 @@ rtl.module("program",["System","Web","JS","fpjson","fpjsonjs","SysUtils"],functi
                 this.p = v;
               }}) + "]";
             li = document.createElement("li");
-            li.appendChild(sp);
             ne += 1;
+            li.appendChild(sp);
             ul = document.createElement("ul");
+            ne += 1;
             ul.setAttribute("class","nested");
             montaLista(oo.Value,ul);
             li.appendChild(ul);
-            ne += 1;
             el.appendChild(li);
-            ne += 1;
             ni += 1;
           } else {
             var $tmp1 = oo.Value.$class.JSONType();
@@ -4257,9 +4258,12 @@ rtl.module("program",["System","Web","JS","fpjson","fpjsonjs","SysUtils"],functi
               vl = oo.Value.GetAsString();
             };
             lii = document.createElement("li");
+            ne += 1;
             sp = document.createElement("i");
+            ne += 1;
             sp.innerText = oo.Key + " = ";
             lii.appendChild(sp);
+            sp = document.createElement("b");
             ne += 1;
             if (oo.Value.$class.JSONType() === 2) {
               if (pas.SysUtils.TStringHelper.StartsWith.call({get: function () {
@@ -4267,19 +4271,18 @@ rtl.module("program",["System","Web","JS","fpjson","fpjsonjs","SysUtils"],functi
                 }, set: function (v) {
                   vl = v;
                 }},"http")) {
-                sp = document.createElement("a");
-                sp.setAttribute("href",vl);
-                sp.setAttribute("target","_blank");
-                sp.innerText = vl;
-              } else {
-                sp = document.createElement("b");
-                sp.innerText = '"' + vl + '"';
-              };
-              lii.appendChild(sp);
-              ne += 1;
+                href = document.createElement("a");
+                ne += 1;
+                href.setAttribute("href",vl);
+                href.setAttribute("target","_blank");
+                href.innerText = vl;
+                sp.append(href);
+              } else sp.innerText = '"' + vl + '"';
+            } else {
+              sp.innerText = vl;
             };
+            lii.appendChild(sp);
             el.appendChild(lii);
-            ne += 1;
             ni += 1;
           };
         }
@@ -4292,7 +4295,6 @@ rtl.module("program",["System","Web","JS","fpjson","fpjsonjs","SysUtils"],functi
     try {
       jSON = pas.fpjson.GetJSON(LFileContent,true);
       tp = pas.SysUtils.Now();
-      $mod.ulText.innerText = "";
       montaLista(jSON,$mod.ulText);
       tr = pas.SysUtils.Now();
       var toggler = document.getElementsByClassName("box");
@@ -4318,7 +4320,8 @@ rtl.module("program",["System","Web","JS","fpjson","fpjsonjs","SysUtils"],functi
     var Result = false;
     var LReader = null;
     $mod.ti = pas.SysUtils.Now();
-    $mod.LFile = $mod.GInput.files.item(0);
+    $mod.ulText.innerText = "";
+    $mod.LFile = $mod.FInput.files.item(0);
     LReader = new FileReader();
     LReader.onload = rtl.createSafeCallback($mod,"LerArquivo");
     $mod.lbText.innerHTML = '<center><div id="loader" class="loader"></div></center>';
@@ -4326,8 +4329,8 @@ rtl.module("program",["System","Web","JS","fpjson","fpjsonjs","SysUtils"],functi
     return Result;
   };
   $mod.$main = function () {
-    $mod.GInput = document.getElementById("input");
-    $mod.GInput.onchange = rtl.createSafeCallback($mod,"NovoArquivo");
+    $mod.FInput = document.getElementById("input");
+    $mod.FInput.onchange = rtl.createSafeCallback($mod,"NovoArquivo");
     $mod.lbText = document.getElementById("output");
     $mod.ulText = document.getElementById("myUL");
   };
