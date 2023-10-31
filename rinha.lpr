@@ -4,7 +4,7 @@ uses
   Web,JS, fpjson, fpjsonjs, sysutils;
 
 var
-  GInput: TJSHTMLInputElement;
+  FInput: TJSHTMLInputElement;
   ulText,
   lbText:TJSHTMLElement;
   LFile: TJSHTMLFile;
@@ -21,30 +21,31 @@ var
   var
     oo: TJSONEnum;
     tp, vl: String;
-    li,lii,ul,sp,spi:TJSElement;
-    i,j: Integer;
+    li,lii,ul,sp,href:TJSElement;
   begin
     for oo in jData do begin
+      // se object or array, monta linha e usa recursão para ver os itens
       if oo.Value.JSONType in [jtObject, jtArray] then begin
         case oo.Value.JSONType of
           jtObject : tp:=' : Object';
           jtArray  : tp:=' : Array';
         end;
         sp:=document.createElement('span');
+        inc(ne);
         sp['class']:='box';
         sp.innerText:=oo.Key+tp+'['+oo.Value.Count.ToString+']';
         li:=document.createElement('li');
-        li.appendChild(sp);
         inc(ne);
+        li.appendChild(sp);
         ul:=document.createElement('ul');
+        inc(ne);
         ul['class']:='nested';
         montaLista(oo.Value,ul);
         li.appendChild(ul);
-        inc(ne);
         el.appendChild(li);
-        inc(ne);
         inc(ni);
       end else begin
+        // verifica tipo do conteúdo para apresentar resultado
         case oo.Value.JSONType of
           jtNull: vl:='null';
           jtNumber: vl :=oo.Value.AsFloat.ToString;
@@ -53,25 +54,29 @@ var
           vl:=oo.Value.AsString;
         end;
         lii:=document.createElement('li');
+        inc(ne);
         sp:=document.createElement('i');
+        inc(ne);
         sp.innerText:=oo.Key+' = ';
         lii.appendChild(sp);
+        sp:=document.createElement('b');
         inc(ne);
         if oo.Value.JSONType = jtString then begin
+          // se conteúdo inicia por http, entaão cria <a href=
           if vl.StartsWith('http') then begin
-            sp:=document.createElement('a');
-            sp['href']:=vl;
-            sp['target']:='_blank';
-            sp.innerText:=vl;
-          end else begin
-            sp:=document.createElement('b');
-            sp.innerText:='"'+vl+'"';
-          end;
-          lii.appendChild(sp);
-          inc(ne);
+            href:=document.createElement('a');
+            inc(ne);
+            href['href']:=vl;
+            href['target']:='_blank';
+            href.innerText:=vl;
+            sp.append(href);
+          end else
+            sp.innerText:='"'+vl+'"'
+        end else begin
+          sp.innerText:=vl;
         end;
+        lii.appendChild(sp);
         el.appendChild(lii);
-        inc(ne);
         inc(ni);
       end;
     end;
@@ -83,9 +88,9 @@ begin
   try
     JSON:=GetJSON(LFileContent,true);
     tp:=now;
-    ulText.innerText:='';
     montaLista(JSON,ulText);
     tr:=now;
+    // executa JS diretamente para ativar expand/collapse do itens
     asm
       var toggler = document.getElementsByClassName("box");
       var i;
@@ -119,7 +124,8 @@ var
   LReader: TJSFileReader;
 begin
   ti:=now;
-  LFile := GInput.Files[0];
+  ulText.innerText:='';
+  LFile := FInput.Files[0];
   LReader := TJSFileReader.New;
   LReader.OnLoad := @LerArquivo;
   lbText.innerHTML:= '<center><div id="loader" class="loader"></div></center>';
@@ -127,8 +133,8 @@ begin
 end;
 
 begin
-  GInput := TJSHTMLInputElement(Document.GetElementByID('input'));
-  GInput.OnChange := @NovoArquivo;
+  FInput := TJSHTMLInputElement(Document.GetElementByID('input'));
+  FInput.OnChange := @NovoArquivo;
   lbText:=TJSHTMLElement(document.getElementById('output'));
   ulText:=TJSHTMLElement(document.getElementById('myUL'));
 end.
