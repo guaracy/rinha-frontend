@@ -33,7 +33,7 @@ var
         sp:=document.createElement('span');
         inc(ne);
         sp['class']:='box';
-        sp.innerText:=oo.Key+tp+'['+oo.Value.Count.ToString+']';
+        sp.innerText:=oo.Key+tp+'['+oo.Value.Count.ToString+' itens]';
         li:=document.createElement('li');
         inc(ne);
         li.appendChild(sp);

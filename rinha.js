@@ -4231,7 +4231,7 @@ rtl.module("program",["System","Web","JS","fpjson","fpjsonjs","SysUtils"],functi
                 return this.p;
               }, set: function (v) {
                 this.p = v;
-              }}) + "]";
+              }}) + " itens]";
             li = document.createElement("li");
             ne += 1;
             li.appendChild(sp);
